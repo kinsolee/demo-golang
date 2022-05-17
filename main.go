@@ -5,25 +5,12 @@ import (
 	"net/http"
 )
 
-func hello(w http.ResponseWriter, req *http.Request) {
-
-	fmt.Fprintf(w, "hello\n")
-}
-
-func headers(w http.ResponseWriter, req *http.Request) {
-
-	for name, headers := range req.Header {
-		for _, h := range headers {
-			fmt.Fprintf(w, "%v: %v\n", name, h)
-		}
-	}
+func HelloWorld(res http.ResponseWriter, req *http.Request) {
+	fmt.Fprint(res, "Hello World")
 }
 
 func main() {
-
-	http.HandleFunc("/", hello)
-	http.HandleFunc("/hello", hello)
-	http.HandleFunc("/headers", headers)
-
-	http.ListenAndServe(":80", nil)
+	http.HandleFunc("/", HelloWorld)
+	http.ListenAndServe(":3000", nil)
 }
+
