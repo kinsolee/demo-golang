@@ -1,0 +1,23 @@
+apiVersion: builds.katanomi.dev/v1alpha1
+kind: Build
+spec:
+  workspaces:
+    - description: >
+        This workspace is shared among all the pipeline tasks to read/write
+        common resources
+      name: source
+  tasks:
+    - name: golang-build-test
+      timeout: 30m
+      retries: 3
+      taskRef:
+        kind: ClusterTask
+        name: golang-build-test
+      workspaces:
+        - name: source
+          workspace: source
+      params:
+        - name: test
+          value: go test -v -coverpkg=./... -coverprofile=profile.cov ./...
+        - name: build
+          value: go build .
