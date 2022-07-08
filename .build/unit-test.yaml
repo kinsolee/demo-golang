@@ -32,7 +32,7 @@ spec:
           workspace: source
       params:
         - name: address
-          value: "192.168.130.183:30000"
+          value: http://192.168.130.183:30000
     - name: build-image
       timeout: 30m
       retries: 3
