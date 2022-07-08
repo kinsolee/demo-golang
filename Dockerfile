@@ -1,4 +1,4 @@
-FROM registry.alauda.cn:60080/devops/golang:1.18-ubuntu21.04
+FROM registry.alauda.cn:60080/test/golang:1.18-buster
 
 ENV GO111MODULE=on \
   GOPROXY=https://goproxy.cn,direct \
