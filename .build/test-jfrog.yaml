@@ -49,8 +49,8 @@ spec:
           value: ./chart
         - name: address
           value: 192.168.17.28:18081/devops/go-demo-chart
-        - name: v1
-          value: go-demo-chart
+        - name: version
+          value: v1
         - name: labels
           value: []
         - name: registry-login-options
