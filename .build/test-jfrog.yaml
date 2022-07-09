@@ -20,7 +20,7 @@ spec:
           workspace: source
       params:
         - name: container-image
-          value: 192.168.17.28:18081/aaaaa/go-demo1
+          value: 192.168.17.28:18081/docker/aaaaa:go-demo1
         - name: container-image-tag
           value: v1.1
         - name: dockerfile
@@ -48,7 +48,7 @@ spec:
         - name: dir
           value: ./chart
         - name: address
-          value: 192.168.17.28:18081/aaaaa/go-demo-chart
+          value: 192.168.17.28:18081/docker/aaaaa:go-demo-chart
         - name: version
           value: v.0.0.1
         - name: labels
