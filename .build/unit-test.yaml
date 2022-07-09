@@ -21,18 +21,6 @@ spec:
           value: go test -v -coverpkg=./... -coverprofile=profile.cov ./...
         - name: build
           value: go build .
-    - name: sonarqube
-      timeout: 30m
-      retries: 3
-      taskRef:
-        kind: ClusterTask
-        name: sonarqube
-      workspaces:
-        - name: source
-          workspace: source
-      params:
-        - name: address
-          value: http://192.168.130.183:30000
     - name: build-image
       timeout: 30m
       retries: 3
