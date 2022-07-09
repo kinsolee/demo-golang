@@ -56,4 +56,4 @@ spec:
         - name: registry-login-options
           value: --insecure
         - name: chart-push-options
-          value: --insecure
+          value: --insecure --plain-http
