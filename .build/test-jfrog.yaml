@@ -20,9 +20,9 @@ spec:
           workspace: source
       params:
         - name: container-image
-          value: 192.168.17.28:18081/docker/aaaaa:go-demo1
+          value: 192.168.17.28:18081/docker/aaaaa
         - name: container-image-tag
-          value: v1.1
+          value: go-demo1
         - name: dockerfile
           value: ./Dockerfile
         - name: labels
@@ -48,9 +48,9 @@ spec:
         - name: dir
           value: ./chart
         - name: address
-          value: http://192.168.17.28:18081/docker/aaaaa:go-demo-chart
+          value: 192.168.17.28:18081/docker/aaaaa
         - name: version
-          value: v.0.0.1
+          value: go-demo-chart
         - name: labels
           value: []
         - name: registry-login-options
