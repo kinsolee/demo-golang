@@ -20,9 +20,9 @@ spec:
           workspace: source
       params:
         - name: container-image
-          value: 192.168.17.28:18081/docker/aaaaa
+          value: 192.168.17.28:18081/devops/go-demo1
         - name: container-image-tag
-          value: go-demo1
+          value: v1
         - name: dockerfile
           value: ./Dockerfile
         - name: labels
@@ -48,12 +48,12 @@ spec:
         - name: dir
           value: ./chart
         - name: address
-          value: 192.168.17.28:18081/docker/aaaaa
-        - name: version
+          value: 192.168.17.28:18081/devops/go-demo-chart
+        - name: v1
           value: go-demo-chart
         - name: labels
           value: []
         - name: registry-login-options
           value: --insecure
         - name: chart-push-options
-          value: --insecure --plain-http
+          value: --insecure
