@@ -21,3 +21,81 @@ spec:
           value: go test -v -coverpkg=./... -coverprofile=profile.cov ./...
         - name: build
           value: go build .
+    - name: build-image1
+      timeout: 30m
+      retries: 3
+      taskRef:
+        kind: ClusterTask
+        name: build-image
+      workspaces:
+        - name: source
+          workspace: source
+      params:
+        - name: container-image
+          value: 192.168.130.183:32000/devops/go-demo1
+        - name: container-image-tag
+          value: v1.1
+        - name: dockerfile
+          value: ./Dockerfile
+        - name: labels
+          value: []
+        - name: context
+          value: .
+        - name: push-extra-args
+          value: --storage-driver=vfs --tls-verify=false
+        - name: build-extra-args
+          value: --storage-driver=vfs --tls-verify=false
+        - name: format
+          value: docker
+    - name: build-image2
+      runAfter:
+        - build-oci-chart
+      timeout: 30m
+      retries: 3
+      taskRef:
+        kind: ClusterTask
+        name: build-image
+      workspaces:
+        - name: source
+          workspace: source
+      params:
+        - name: container-image
+          value: 192.168.130.183:32000/devops/go-demo2
+        - name: container-image-tag
+          value: v1.1
+        - name: dockerfile
+          value: ./Dockerfile
+        - name: labels
+          value: []
+        - name: context
+          value: .
+        - name: push-extra-args
+          value: --storage-driver=vfs --tls-verify=false
+        - name: build-extra-args
+          value: --storage-driver=vfs --tls-verify=false
+        - name: format
+          value: docker
+    - name: build-oci-chart
+      runAfter:
+        - build-image1
+      timeout: 30m
+      retries: 3
+      taskRef:
+        kind: ClusterTask
+        name: build-oci-chart
+      workspaces:
+        - name: source
+          workspace: source
+      params:
+        - name: dir
+          value: ./chart
+        - name: address
+          value: 192.168.130.183:32000/devops/go-demo-chart
+        - name: version
+          value: v.0.0.1
+        - name: labels
+          value: []
+        - name: registry-login-options
+          value: --insecure
+        - name: chart-push-options
+          value: --insecure
