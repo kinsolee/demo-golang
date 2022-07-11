@@ -8,8 +8,6 @@ spec:
       name: source
   tasks:
     - name: build-image1
-      runAfter:
-        - build-oci-chart
       timeout: 30m
       retries: 3
       taskRef:
@@ -35,25 +33,3 @@ spec:
           value: --storage-driver=vfs --tls-verify=false
         - name: format
           value: docker
-    - name: build-oci-chart
-      timeout: 30m
-      retries: 3
-      taskRef:
-        kind: ClusterTask
-        name: build-oci-chart
-      workspaces:
-        - name: source
-          workspace: source
-      params:
-        - name: dir
-          value: ./chart
-        - name: address
-          value: 192.168.17.28:18081/devops/go-demo-chart
-        - name: version
-          value: v1
-        - name: labels
-          value: []
-        - name: registry-login-options
-          value: --insecure
-        - name: chart-push-options
-          value: --insecure
