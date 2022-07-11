@@ -1,4 +1,4 @@
-FROM golang:1.18
+FROM registry.alauda.cn:60080/test/golang:1.18-buster
 
 ENV GO111MODULE=on \
   GOPROXY=https://goproxy.cn,direct \
